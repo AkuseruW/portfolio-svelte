@@ -1,12 +1,12 @@
 <script>
-	import Header from './Header.svelte';
 	import '../app.css';
+	import Separator from '$lib/svg/Separator.svelte';
 </script>
 
-<div class="app">
-	<Header />
+<div class="app min-h-full">
+	<Separator />
 
-	<main class="container h-full bg-slate-600">
+	<main class="container mx-auto h-full">
 		<slot />
 	</main>
 
