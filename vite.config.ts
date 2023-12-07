@@ -9,7 +9,7 @@ export default defineConfig({
 	server: {
 		fs: {
 			strict: false,
-			allow: ['/home/axelw/portfolio-svelte/api'],
+			allow: ['/api'],
 		},
 		proxy: {
 			"/api": {

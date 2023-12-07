@@ -7,6 +7,8 @@ body {
     padding: 0;
     margin: 0;
     height: 100%;
+    background-color: #F7F9FF;
+    color: #1F2D5C;
 }
 
 .custom-shape-divider-top-1701873297 {
@@ -28,4 +30,28 @@ body {
 
 .custom-shape-divider-top-1701873297 .shape-fill {
     fill: #C2E5FF;
+}
+
+.zoom-animation {
+    transition: transform 0.3s ease-in-out;
+    margin-right: 8px;
+}
+
+.zoom-animation:hover {
+    transform: scale(1.2) rotate(0deg);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    60% {
+        transform: scale(0.75) rotate(20deg);
+    }
+
+    100% {
+        transform: scale(0.85) rotate(0deg);
+    }
 }
