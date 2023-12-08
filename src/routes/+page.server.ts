@@ -4,11 +4,11 @@ export const load = () => {
     }
 
     const skills = async () => {
-        return await fetch('http://localhost:8000/api/skills/').then(res => res.json())
+        return await fetch('http://localhost:8000/api/categories/').then(res => res.json())
     }
 
     return {
         experiences: experiences(),
-        skills: skills()
+        skills: skills(),
     }
 }

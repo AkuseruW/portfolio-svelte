@@ -1,5 +1,5 @@
 <script lang="ts">
-	const text = "Hi, I'm Wolfs Axel \nWeb Developer";
+	const text = "Hi, there \nI'm Wolfs Axel";
 	const lines = text.split('\n');
 	let returnedText: string[][] = [];
 

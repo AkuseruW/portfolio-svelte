@@ -18,18 +18,13 @@
 		<div class="space-y-4">
 			<Home />
 		</div>
-		<div class="flex gap-16 max-w-[330px] mt-8 p-1">
-			<LinkHeader link="https://github.com/AkuseruW" target="_blank" icon="Github" />
-			<LinkHeader link="mailto:wolfs.axelw@gmail.com" icon="Mail" />
-			<LinkHeader link="/#exp" icon="Linkedin" />
-		</div>
 	</div>
-	<div class="w-2/5 h-full">
-		<!-- <CanvasSection /> -->
+	<div class="w-2/5 h-full flex items-center">
+		<img src="/images/40758068.png" alt="" height="400" width="400" class="rounded-full">
 	</div>
 </section>
 
-<section id="exp" class="min-h-screen flex flex-col items-start max-w-[40%]">
+<section id="exp" class="min-h-screen flex flex-col items-start">
 	<Experience />
 	<TimeLine experiences={data.experiences} />
 </section>

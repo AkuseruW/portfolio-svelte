@@ -8,8 +8,10 @@
 	);
 </script>
 
-<div class="flex flex-col lg:top-36 mt-2">
-	<h2 class="text-5xl lg:text-5xl font-bold leading-tight">
-		{@html returnedText.map((line) => line.join(''))}
+<div class="flex items-center lg:top-36 mt-2 justify-between">
+	<h2 class="text-xl lg:text-3xl font-bold leading-tight">
+		<span>#</span> {@html returnedText.map((line) => line.join(''))}
 	</h2>
+	<hr class="w-[700px] border h-1 bg-[#1F2D5C]">
+	<span class="">View all ~~></span>
 </div>

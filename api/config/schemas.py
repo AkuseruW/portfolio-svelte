@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel
 
 class SignInRequest(BaseModel):
@@ -32,11 +32,10 @@ class Skills(BaseModel):
     id: int
     name: str
     icones: str
-    category_id: int
-    category: str  
 
 class Skills_CategoryCreate(BaseModel):
     name: str
 
 class Skills_Category(Skills_CategoryCreate):
     id: int
+    skills: List[Skills]
