@@ -6,8 +6,10 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
+
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
+
 
 def authenticate_user(email: str, password: str, db: Session = Depends(get_db)):
     user_query = db.query(Admin).filter(Admin.email == email).first()

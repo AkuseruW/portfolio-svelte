@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: Istok_Web;
+    src: url(/font/Istok_Web/IstokWeb-Regular.ttf);
+    font-weight: 700;
+    font-display: swap;
+    subsets: latin;
+}
+
 html,
 body {
     padding: 0;
@@ -9,6 +17,7 @@ body {
     height: 100%;
     background-color: #F7F9FF;
     color: #1F2D5C;
+    font-family: Istok_Web;
 }
 
 .custom-shape-divider-top-1701873297 {

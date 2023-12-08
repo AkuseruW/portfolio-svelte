@@ -11,6 +11,7 @@ import uuid
 router = APIRouter(prefix="/api", tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+
 @router.post("/login")
 async def login(form_data: SignInRequest, db: Session = Depends(get_db)):
     user = authenticate_user(form_data.email, form_data.password, db)
@@ -20,11 +21,9 @@ async def login(form_data: SignInRequest, db: Session = Depends(get_db)):
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
     token = str(uuid.uuid4())
     response = JSONResponse(content={"message": "Login successful"})
     response.set_cookie(key="auth_token", value=token, secure=True, httponly=True)
 
     return response
-
-

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from api.config.database import get_db
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 import api.config.schemas as schemas
 from api.config.models import Skills
 from api.dependencies.uploads import upload_image_to_cloudinary
@@ -10,15 +10,28 @@ router = APIRouter(prefix="/api/skills", tags=["skills"])
 
 @router.get("/", status_code=200, response_model=list[schemas.Skills])
 async def get_skills(db: Session = Depends(get_db)):
-    return db.query(Skills).all()
+    skills = db.query(Skills).all()
+    skills_with_category = [
+        skill.__dict__ | {"category": skill.category.name} for skill in skills
+    ]
+
+    return skills_with_category
 
 
 @router.post("/", status_code=201, response_model=schemas.Skills)
 async def create_skill(
-    name: str = Form(...), icones: UploadFile = File(...), db: Session = Depends(get_db)
+    name: str = Form(...),
+    category: int = Form(...),
+    icones: UploadFile = File(...),
+    db: Session = Depends(get_db),
 ):
     file = await upload_image_to_cloudinary(icones)
-    skill = Skills(name=name, icones=file["secure_url"], public_id=file["public_id"])
+    skill = Skills(
+        name=name,
+        icones=file["secure_url"],
+        category_id=category,
+        public_id=file["public_id"],
+    )
     db.add(skill)
     db.commit()
 

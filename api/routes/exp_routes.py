@@ -24,25 +24,27 @@ async def create_experience(
         endTime=request.endTime,
         link=request.link,
     )
-    
+
     db.add(experience)
     db.commit()
     return experience
 
 
 @router.patch("/{id}", status_code=200, response_model=schemas.Create_Experience)
-async def update_experience(id: int, request: schemas.Create_Experience, db: Session = Depends(get_db)):
+async def update_experience(
+    id: int, request: schemas.Create_Experience, db: Session = Depends(get_db)
+):
     pass
 
 
 @router.delete("/{id}", status_code=200)
 async def delete_experience(id: int, db: Session = Depends(get_db)):
     experience = db.get(Experiences, id)
-    
+
     if not experience:
         raise HTTPException(status_code=404, detail="Experience not found")
-    
+
     db.delete(experience)
     db.commit()
-    
+
     return {"message": "Experience deleted successfully"}

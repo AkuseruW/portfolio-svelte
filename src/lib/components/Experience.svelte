@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex flex-col lg:top-36 mt-2">
-	<h1 class="text-5xl lg:text-5xl font-bold leading-tight">
-		{@html returnedText.map((line) => line.join('')).join('<br />')}
-	</h1>
+	<h2 class="text-5xl lg:text-5xl font-bold leading-tight">
+		{@html returnedText.map((line) => line.join(''))}
+	</h2>
 </div>

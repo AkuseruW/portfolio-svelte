@@ -1,6 +1,5 @@
 from typing import Optional
 from pydantic import BaseModel
-from fastapi import Form, UploadFile, File
 
 class SignInRequest(BaseModel):
     email: str
@@ -33,7 +32,8 @@ class Skills(BaseModel):
     id: int
     name: str
     icones: str
-    
+    category_id: int
+    category: str  
 
 class Skills_CategoryCreate(BaseModel):
     name: str
