@@ -14,17 +14,17 @@
 </svelte:head>
 
 <section id="top" class="flex items-center h-screen">
-	<div class="w-4/5">
+	<div class="w-3/5">
 		<div class="space-y-4">
 			<Home />
 		</div>
 	</div>
-	<div class="w-1/5 h-full flex items-center">
+	<div class="w-2/5 h-full flex items-center justify-end">
 		<img
 			src="/images/40758068.png"
 			alt="profile"
-			height="400"
-			width="400"
+			height="350"
+			width="350"
 			class="rounded-full relative"
 		/>
 		<img src={dots} alt="dots" class="absolute top-[450px]" />

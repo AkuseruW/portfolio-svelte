@@ -9,15 +9,12 @@ export default defineConfig({
 	server: {
 		fs: {
 			strict: false,
-			allow: ['/api'],
+			allow: ["/api", "/api/**"],
 		},
 		proxy: {
 			"/api": {
-				target: process.env.NODE_ENV === "development"
-					? "http://127.0.0.1:8000"
-					: "/api",
+				target: "/api",
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, '')
 			},
 			"/docs": {
 				target: process.env.NODE_ENV === "development"
