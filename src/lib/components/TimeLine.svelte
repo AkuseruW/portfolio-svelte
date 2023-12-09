@@ -3,8 +3,8 @@
 	export let experiences: Experience[] = [];
 </script>
 
-<div class="relative flex flex-col lg:pt-6 h-full">
-	<span class="absolute h-full border" style="border: 1px solid, borderRadius: 1% "></span>
+<div class="relative flex flex-col lg:pt-6 h-full w-[50%]">
+	<!-- <span class="absolute h-full border" style="border: 1px solid, borderRadius: 1% "></span> -->
 	{#each experiences as experience (experience.id)}
 		<div class="mb-8 ml-8 flex flex-col items-start w-full">
 			<span class="mb-3 text-sm md:text-base lg:text-lg"

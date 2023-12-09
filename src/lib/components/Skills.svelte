@@ -1,4 +1,3 @@
-<!-- skillsTable.svelte -->
 <script lang="ts">
 	import type { Skills } from '$lib/types/skills';
 
@@ -13,26 +12,23 @@
 </script>
 
 <div class="flex items-center lg:top-36 mt-2">
-	<h2 class="text-5xl lg:text-5xl font-bold leading-tight">
+	<h2 class="text-xl lg:text-3xl font-bold leading-tight">
+		<span>#</span>
 		{@html returnedText.map((line) => line.join(''))}
 	</h2>
-	<hr class="w-[500px] border h-1 bg-[#1F2D5C]">
+	<hr class="w-[700px] border h-[3px] bg-[#1F2D5C] ml-9" />
 </div>
 
-<div class="flex lg:top-36 mt-2 space-x-3">
+<div class="flex mt-16 justify-between">
 	{#each skills as skill (skill.name)}
-		<table class="border-2 border-solid border-[#1F2D5C]">
-			<tr class="text-2xl font-bold border-solid border-2 border-[#1F2D5C]">
-				<th>{skill.name}</th>
-			</tr>
-			<tr class="py-2 flex flex-col items-center justify-center">
-				{#each skill.skills as skillinfo (skillinfo.id)}
-					<td class="flex items-center gap-2 text-lg w-full">
-						<img src={skillinfo.icones} alt={skillinfo.name} width={20} height={20} />
-						<span class="text-sm md:text-base lg:text-lg">{skillinfo.name}</span>
-					</td>
-				{/each}
-			</tr>
-		</table>
+	<ul class="flex flex-col">
+			<h4 class="text-lg md:text-xl lg:text-2xl">{skill.name}</h4>
+			{#each skill.skills as skillinfo (skillinfo.id)}
+				<li class="text-lg mt-4 flex gap-3">
+					<img src={skillinfo.icones} alt={skillinfo.name} width={20} height={20} />
+					<span class="text-sm md:text-base lg:text-lg">{skillinfo.name}</span>
+				</li>
+			{/each}
+		</ul>
 	{/each}
 </div>
