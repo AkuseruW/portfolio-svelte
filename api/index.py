@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 from .config import models, database
-from .routes import exp_routes, user_routes, skills_routes, skills_category
+from .routes import (
+    exp_routes,
+    skills_category_routes,
+    user_routes,
+    skills_routes,
+    project_routes,
+)
 from fastapi.middleware.cors import CORSMiddleware
 
 models.Base.metadata.create_all(bind=database.engine)
@@ -11,7 +17,8 @@ routers = [
     exp_routes.router,
     user_routes.router,
     skills_routes.router,
-    skills_category.router,
+    skills_category_routes.router,
+    project_routes.router,
 ]
 
 for router in routers:
@@ -30,6 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
+
+@app.get("/api")
 async def root():
     return {"message": "Hello World"}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Project } from '$lib/types/projects';
-	export let projects: any[] = [];
+	export let projects: Project[] = [];
 	const text = 'Projects';
 	const lines = text.split('\n');
 	let returnedText: string[][] = [];

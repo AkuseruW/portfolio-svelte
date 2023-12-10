@@ -41,5 +41,5 @@
 </section>
 
 <section id="projects" class="h-screen relative">
-	<!-- <Projects projects={data.projects} /> -->
+	<Projects projects={data.projects} />
 </section>

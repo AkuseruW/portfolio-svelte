@@ -43,6 +43,8 @@
 	"type": "module",
 	"dependencies": {
 		"@tanstack/svelte-query": "^5.13.2",
+		"@types/node": "^20.10.4",
+		"bits-ui": "^0.11.6",
 		"clsx": "^2.0.0",
 		"concurrently": "^8.2.2",
 		"lucide-svelte": "^0.294.0",

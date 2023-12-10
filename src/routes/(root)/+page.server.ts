@@ -8,8 +8,15 @@ export const load = () => {
         return await fetch(`${SERVEUR_URL}/api/categories/`).then(res => res.json())
     }
 
+    const projects = async () => {
+        return await fetch(`${SERVEUR_URL}/api/projects/`).then(res => res.json())
+    }
+
     return {
         experiences: experiences(),
         skills: skills(),
+        projects: projects()
     }
 }
+
+

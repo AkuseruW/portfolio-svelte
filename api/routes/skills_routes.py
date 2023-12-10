@@ -22,10 +22,10 @@ async def get_skills(db: Session = Depends(get_db)):
 async def create_skill(
     name: str = Form(...),
     category: int = Form(...),
-    icones: UploadFile = File(...),
+    icon: UploadFile = File(...),
     db: Session = Depends(get_db),
 ):
-    file = await upload_image_to_cloudinary(icones)
+    file = await upload_image_to_cloudinary(icon)
     skill = Skills(
         name=name,
         icones=file["secure_url"],
