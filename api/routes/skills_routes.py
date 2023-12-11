@@ -3,7 +3,7 @@ from api.config.database import get_db
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 import api.config.schemas as schemas
 from api.config.models import Skills
-from api.dependencies.uploads import upload_image_to_cloudinary
+from api.dependencies.uploads import delete_image, upload_image_to_cloudinary
 
 router = APIRouter(prefix="/api/skills", tags=["skills"])
 
@@ -16,6 +16,16 @@ async def get_skills(db: Session = Depends(get_db)):
     ]
 
     return skills_with_category
+
+
+@router.get("/{id}")
+async def get_skill(id: int, db: Session = Depends(get_db)):
+    skill = db.get(Skills, id)
+
+    if not skill:
+        raise HTTPException(status_code=404, detail="Skill not found")
+
+    return skill
 
 
 @router.post("/", status_code=201, response_model=schemas.Skills)
@@ -42,10 +52,28 @@ async def create_skill(
 async def update_skill(
     id: int,
     name: str = Form(...),
-    icones: UploadFile = File(...),
+    category: int = Form(...),
+    icon: UploadFile = File(None),
     db: Session = Depends(get_db),
 ):
-    pass
+    skill = db.get(Skills, id)
+
+    if not skill:
+        raise HTTPException(status_code=404, detail="Skill not found")
+
+    if icon:
+        await delete_image(skill.public_id)
+        file = await upload_image_to_cloudinary(icon)
+        skill.icones = file["secure_url"]
+        skill.public_id = file["public_id"]
+
+    skill.name = name
+    skill.category_id = category
+    
+    db.commit()
+    db.refresh(skill)
+
+    return skill
 
 
 @router.delete("/{id}", status_code=200)

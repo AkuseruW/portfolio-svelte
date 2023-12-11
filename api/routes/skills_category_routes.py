@@ -1,6 +1,5 @@
-from unicodedata import category
 from sqlalchemy.orm import Session
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from api.config.database import get_db
 import api.config.schemas as schemas
 from api.config.models import Skills_Category
@@ -17,6 +16,15 @@ async def get_categories(db: Session = Depends(get_db)):
     return category_with_skills
 
 
+@router.get("/{id}")
+async def get_category(id: int, db: Session = Depends(get_db)):
+    category = db.get(Skills_Category, id)
+
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
+
+    return category
+
 @router.post("/", status_code=201, response_model=schemas.Skills_Category)
 async def create_category(
     data: schemas.Skills_CategoryCreate, db: Session = Depends(get_db)
@@ -30,9 +38,18 @@ async def create_category(
 
 @router.patch("/{id}")
 async def update_category(
-    data: schemas.Skills_CategoryCreate, db: Session = Depends(get_db)
+    id: int, data: schemas.Skills_CategoryCreate, db: Session = Depends(get_db)
 ):
-    pass
+    category = db.get(Skills_Category, id)
+
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
+
+    category.name = data.name
+    db.commit()
+    db.refresh(category)
+
+    return category
 
 
 @router.delete("/{id}", status_code=200)

@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from api.config.database import get_db
 from api.config.models import Experiences
 import api.config.schemas as schemas
+from api.dependencies.uploads import delete_image
 
 router = APIRouter(prefix="/api/experiences", tags=["experiences"])
 

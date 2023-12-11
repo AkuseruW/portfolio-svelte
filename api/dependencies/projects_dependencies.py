@@ -14,10 +14,11 @@ async def upload_project_images(image, project_id):
     return new_image
 
 
-async def add_skill_to_project(project_id, skill):
+async def add_skill_to_project(project_id, skill, db):
     new_skill = Skills_to_Project(
         skills_id=skill,
         projects_id=project_id,
     )
+    db.add(new_skill)
 
     return new_skill
