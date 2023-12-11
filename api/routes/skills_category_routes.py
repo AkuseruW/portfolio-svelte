@@ -26,3 +26,23 @@ async def create_category(
     db.commit()
 
     return category
+
+
+@router.patch("/{id}")
+async def update_category(
+    data: schemas.Skills_CategoryCreate, db: Session = Depends(get_db)
+):
+    pass
+
+
+@router.delete("/{id}", status_code=200)
+async def delete_category(id: int, db: Session = Depends(get_db)):
+    category = db.get(Skills_Category, id)
+
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
+
+    db.delete(category)
+    db.commit()
+
+    return {"message": "Category deleted successfully"}

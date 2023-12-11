@@ -22,8 +22,8 @@
 {#each projects as project}
 	<div class="mb-8 ml-8 flex justify-between items-center w-full">
 		<div class="py-2 flex items-center justify-center">
-			<!-- <img src={project.icones} alt={project.name} width={50} height={50} /> -->
-			<!-- <span class="text-sm md:text-base lg:text-lg">{project.name}</span> -->
+			<img src={project.image} alt={project.name} width={50} height={50} />
+			<span class="text-sm md:text-base lg:text-lg">{project.name}</span>
 		</div>
 	</div>
 {/each}

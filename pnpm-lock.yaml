@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@internationalized/date':
+    specifier: ^3.5.0
+    version: 3.5.0
   '@tanstack/svelte-query':
     specifier: ^5.13.2
     version: 5.13.2(svelte@4.2.8)
@@ -20,6 +23,9 @@ dependencies:
   concurrently:
     specifier: ^8.2.2
     version: 8.2.2
+  date-picker-svelte:
+    specifier: ^2.10.1
+    version: 2.10.1(svelte@4.2.8)
   lucide-svelte:
     specifier: ^0.294.0
     version: 0.294.0(svelte@4.2.8)
@@ -85,6 +91,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.6.2
     version: 3.6.2(postcss@8.4.32)(svelte@4.2.8)
+  svelte-headless-table:
+    specifier: ^0.17.7
+    version: 0.17.7(svelte@4.2.8)
   tailwindcss:
     specifier: ^3.3.6
     version: 3.3.6
@@ -1476,6 +1485,14 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.5
+    dev: false
+
+  /date-picker-svelte@2.10.1(svelte@4.2.8):
+    resolution: {integrity: sha512-z4cJ33hngSCPlxc1ERVOgRBJHQXwghJMNtQBT0Q2d3Z9IHGmoIYpViS5s9oRbivs4+TDHkIBmqd/8Ldu9xEYhw==}
+    peerDependencies:
+      svelte: ^3.24.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.8
     dev: false
 
   /debug@4.3.4:
@@ -3024,11 +3041,30 @@ packages:
       svelte: 4.2.8
     dev: true
 
+  /svelte-headless-table@0.17.7(svelte@4.2.8):
+    resolution: {integrity: sha512-GRQEM0c4pXfFs6W+LGbsvrBbDqBaMxxibsWq8Q8o4ve4dTHIC9WsbuKMP3jRHl+iC9jd4K/TXJfLJHtLzuKSQA==}
+    peerDependencies:
+      svelte: ^3 || ^4
+    dependencies:
+      svelte: 4.2.8
+      svelte-keyed: 1.1.7(svelte@4.2.8)
+      svelte-render: 1.6.1(svelte@4.2.8)
+      svelte-subscribe: 1.0.6(svelte@4.2.8)
+    dev: true
+
   /svelte-hmr@0.15.3(svelte@4.2.8):
     resolution: {integrity: sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.8
+    dev: true
+
+  /svelte-keyed@1.1.7(svelte@4.2.8):
+    resolution: {integrity: sha512-d3VIwBza12PIQ0mXf8js+r4xoSFiQikDobbi6hx03oQzZx0BImXCBcdsZeYEN7VrNswXcjIrhc9qqjlxcro49w==}
+    peerDependencies:
+      svelte: ^3.49.0 || ^4
     dependencies:
       svelte: 4.2.8
     dev: true
@@ -3079,6 +3115,23 @@ packages:
       strip-indent: 3.0.0
       svelte: 4.2.8
       typescript: 5.3.3
+    dev: true
+
+  /svelte-render@1.6.1(svelte@4.2.8):
+    resolution: {integrity: sha512-pn580Z6DtxIDrXqQaGR/7z8tdHasgURn1AG5tt4ym1PfE6qFjT27NpN6vIg5kvDl1ewK9pYeTfIWPw4pPXqyuw==}
+    peerDependencies:
+      svelte: ^3 || ^4
+    dependencies:
+      svelte: 4.2.8
+      svelte-subscribe: 1.0.6(svelte@4.2.8)
+    dev: true
+
+  /svelte-subscribe@1.0.6(svelte@4.2.8):
+    resolution: {integrity: sha512-legaLPjOGAN3G6xUa8+1ms3qo3lE4nfypZe1CedyOEoUUwWPfmzJHuBXtwdro4xUf4kezUbzjtyK1UOeZDksog==}
+    peerDependencies:
+      svelte: ^3 || ^4
+    dependencies:
+      svelte: 4.2.8
     dev: true
 
   /svelte@4.2.8:

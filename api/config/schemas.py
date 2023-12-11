@@ -1,24 +1,32 @@
+from datetime import date
 from typing import Optional, List
 from pydantic import BaseModel
+
 
 class SignInRequest(BaseModel):
     email: str
     password: str
 
+
 class Projects(BaseModel):
+    id: int
     name: str
     description: str
     link: str
-    
+    dateOfCreation: date
+
+
 class Create_Experience(BaseModel):
     title: str
     description: str
     startTime: int
     endTime: Optional[int]
-    link: Optional[str]   
-    
+    link: Optional[str]
+
+
 class Experiences(Create_Experience):
     id: int
+
 
 class Admin_Schema(BaseModel):
     username: str
@@ -27,14 +35,21 @@ class Admin_Schema(BaseModel):
     about: str
     age: int
     password: str
-    
+
+
 class Skills(BaseModel):
     id: int
     name: str
     icones: str
 
+
+class Skills_with_category(Skills):
+    category: str
+
+
 class Skills_CategoryCreate(BaseModel):
     name: str
+
 
 class Skills_Category(Skills_CategoryCreate):
     id: int

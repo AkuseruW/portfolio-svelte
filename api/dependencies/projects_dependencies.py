@@ -1,11 +1,11 @@
-from api.config.models import Skills_to_Project
+from api.config.models import Skills_to_Project, Images
 from api.dependencies.uploads import upload_image_to_cloudinary
 import api.config.schemas as schemas
 
 
 async def upload_project_images(image, project_id):
     file = await upload_image_to_cloudinary(image)
-    new_image = schemas.Images(
+    new_image = Images(
         image=file["secure_url"],
         public_id=file["public_id"],
         project_id=project_id,

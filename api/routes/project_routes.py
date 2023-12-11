@@ -1,6 +1,7 @@
+from typing import List
 from sqlalchemy.orm import Session
 from api.config.database import get_db
-from fastapi import APIRouter, Depends, Form
+from fastapi import APIRouter, Depends, Form, UploadFile, File
 import api.config.schemas as schemas
 from api.config.models import Projects
 from api.dependencies.projects_dependencies import (
@@ -16,14 +17,14 @@ async def get_projects(db: Session = Depends(get_db)):
     return db.query(Projects).all()
 
 
-@router.post("/", status_code=201, response_model=schemas.Projects)
+@router.post("/", status_code=201, response_model=None)
 async def create_project(
     name: str = Form(...),
     description: str = Form(...),
     link: str = Form(...),
-    dateOfCreation: int = Form(...),
+    dateOfCreation: str = Form(...),
     skills: str = Form(...),
-    images: str = Form(...),
+    images: List[UploadFile] = File(...),
     db: Session = Depends(get_db),
 ):
     project = Projects(
@@ -35,10 +36,8 @@ async def create_project(
         project.images.append(new_image)
 
     for skill in skills:
-        new_skill = await add_skill_to_project(project_id=project.id, skill=skill)
-        project.skills.append(new_skill)
+        await add_skill_to_project(project_id=project.id, skill=skill)
 
     db.add(project)
     db.commit()
-
     return project

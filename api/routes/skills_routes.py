@@ -8,7 +8,7 @@ from api.dependencies.uploads import upload_image_to_cloudinary
 router = APIRouter(prefix="/api/skills", tags=["skills"])
 
 
-@router.get("/", status_code=200, response_model=list[schemas.Skills])
+@router.get("/", status_code=200, response_model=list[schemas.Skills_with_category])
 async def get_skills(db: Session = Depends(get_db)):
     skills = db.query(Skills).all()
     skills_with_category = [
@@ -55,6 +55,8 @@ async def delete_skill(id: int, db: Session = Depends(get_db)):
     if not skill:
         raise HTTPException(status_code=404, detail="Skill not found")
 
+    await delete_image(skill.public_id)
+    
     db.delete(skill)
     db.commit()
 
