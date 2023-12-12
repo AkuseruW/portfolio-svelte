@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from typing import Optional, List
 from pydantic import BaseModel
 
@@ -8,12 +8,9 @@ class SignInRequest(BaseModel):
     password: str
 
 
-class Projects(BaseModel):
+class Image(BaseModel):
+    image: str
     id: int
-    name: str
-    description: str
-    link: str
-    dateOfCreation: date
 
 
 class Create_Experience(BaseModel):
@@ -53,4 +50,14 @@ class Skills_CategoryCreate(BaseModel):
 
 class Skills_Category(Skills_CategoryCreate):
     id: int
+    skills: List[Skills]
+
+
+class Projects(BaseModel):
+    id: int
+    name: str
+    description: str
+    link: str
+    dateOfCreation: date
+    images: List[Image]
     skills: List[Skills]

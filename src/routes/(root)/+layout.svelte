@@ -9,7 +9,7 @@
 </script>
 
 <div class="app min-h-full">
-	<div class=" top-0 left-6 items-center">
+	<div class="hidden lg:block md:block top-0 left-6 items-center">
 		<span class="border h-[150px] ml-4 w-1 bg-[#1F2D5C] absolute"></span>
 		<ul class="flex flex-col gap-6 mt-8 p-1 absolute ml-1 top-32">
 			<li><LinkHeader link="https://github.com/AkuseruW" target="_blank" icon="Github" /></li>
@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="container mx-auto h-full">
-		<div class="w-full">
+		<div class="w-full hidden lg:block md:block">
 			<Header />
 		</div>
 		<main>
@@ -27,12 +27,15 @@
 		</main>
 	</div>
 
-	<footer></footer>
+	<footer class="h-16 mt-16 flex flex-col justify-center items-center container mx-auto ">
+		<hr class="w-full border h-[3px] bg-[#1F2D5C]" />
+		<p class="mt-2">© 2023 - {new Date().getFullYear()} Axel Wolfs</p>
+	</footer>
 </div>
 
 <style>
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
 </style>

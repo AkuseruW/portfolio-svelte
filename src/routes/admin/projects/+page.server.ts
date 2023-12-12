@@ -1,10 +1,9 @@
-import type { PageServerLoad, Actions } from './$types';
+import type { PageServerLoad } from './$types';
 import { SERVEUR_URL } from '$env/static/private'
-import { writeFile } from 'fs/promises';
-
 
 export const load: PageServerLoad = () => {
+    const projects = fetch(`${SERVEUR_URL}/api/projects/`).then(res => res.json())
     return {
-        projects: fetch(`${SERVEUR_URL}/api/projects/`).then(res => res.json())
+        projects
     }
 }

@@ -62,6 +62,7 @@ async def update_skill(
         raise HTTPException(status_code=404, detail="Skill not found")
 
     if icon:
+        print(icon)
         await delete_image(skill.public_id)
         file = await upload_image_to_cloudinary(icon)
         skill.icones = file["secure_url"]

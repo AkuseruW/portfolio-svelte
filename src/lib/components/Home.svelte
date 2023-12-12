@@ -11,7 +11,7 @@
 
 </script>
 
-<h1 class="text-5xl lg:text-5xl font-bold leading-tight">
+<h1 class="text-xl md:text-3xl lg:text-5xl font-bold leading-tight">
 	{@html returnedText.map((line) => line.join('')).join('<br />')}
 </h1>
 <p class="text-sm lg:text-lg">Front End Developer / Back End Developer</p>

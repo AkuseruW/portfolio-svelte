@@ -23,9 +23,6 @@ dependencies:
   concurrently:
     specifier: ^8.2.2
     version: 8.2.2
-  date-picker-svelte:
-    specifier: ^2.10.1
-    version: 2.10.1(svelte@4.2.8)
   lucide-svelte:
     specifier: ^0.294.0
     version: 0.294.0(svelte@4.2.8)
@@ -1493,14 +1490,6 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.6
-    dev: false
-
-  /date-picker-svelte@2.10.1(svelte@4.2.8):
-    resolution: {integrity: sha512-z4cJ33hngSCPlxc1ERVOgRBJHQXwghJMNtQBT0Q2d3Z9IHGmoIYpViS5s9oRbivs4+TDHkIBmqd/8Ldu9xEYhw==}
-    peerDependencies:
-      svelte: ^3.24.0 || ^4.0.0
-    dependencies:
-      svelte: 4.2.8
     dev: false
 
   /debug@4.3.4:

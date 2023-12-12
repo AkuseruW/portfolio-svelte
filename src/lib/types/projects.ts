@@ -1,7 +1,15 @@
+import type { Skill } from "./skills"
+
 export interface Project {
     id: number
-    title: string
+    name: string
     description: string
+    images: ProjectImage[]
+    link: string
+    skills: Skill[]
+}
+
+export interface ProjectImage {
+    id: number
     image: string
-    url: string
 }

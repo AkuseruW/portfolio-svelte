@@ -6,7 +6,7 @@ import { error } from '@sveltejs/kit';
 export const load: PageServerLoad = async ({ params }) => {
     const project = await fetch(`${SERVEUR_URL}/api/projects/${params.id}`).then(res => res.json())
     const skills = await fetch(`${SERVEUR_URL}/api/skills/`).then(res => res.json())
-    
+
     if (project) {
         return {
             project,
@@ -19,26 +19,17 @@ export const load: PageServerLoad = async ({ params }) => {
 
 
 export const actions: Actions = {
-    update_category: async ({ request }) => {
+    update_project: async ({ request }) => {
         const formData = await request.formData();
-        const name = formData.get('name');
+        const images = formData.get('images');
 
-        if (!name) {
-            return {
-                error: 'Name is required'
-            }
+        if (images instanceof Blob && images.size === 0) {
+            formData.delete('images');
         }
 
-        const category = {
-            name
-        }
-
-        const res = await fetch(`${SERVEUR_URL}/api/categories/${formData.get('id')}`, {
+        const res = await fetch(`${SERVEUR_URL}/api/projects/${formData.get('id')}`, {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(category),
+            body: formData,
         })
 
         if (res.ok) {

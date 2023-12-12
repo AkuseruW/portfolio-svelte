@@ -13,6 +13,6 @@
 		<span>#</span>
 		{@html returnedText.map((line) => line.join(''))}
 	</h2>
-	<hr class="w-[600px] border h-[3px] bg-[#1F2D5C] ml-9" />
-	<a href="/#exp" class="absolute right-0">View all ~~></a>
+	<!-- <hr class="w-[600px] border h-[3px] bg-[#1F2D5C] ml-9 hidden lg:flex" /> -->
+	<!-- <a href="/#exp" class="absolute right-0 hidden lg:flex">View all ~~></a> -->
 </div>
