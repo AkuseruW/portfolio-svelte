@@ -2,9 +2,7 @@
 	"name": "portfolio-svelte-",
 	"version": "0.0.1",
 	"scripts": {
-		"fastapi-dev": "pip3 install -r requirements.txt && python3 -m uvicorn api.index:app --reload",
-		"svelte-dev": "vite dev",
-		"dev": "concurrently \"pnpm svelte-dev\" \"pnpm run fastapi-dev\"",
+		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",

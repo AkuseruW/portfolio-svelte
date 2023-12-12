@@ -6,9 +6,6 @@
 	const lines = text.split('\n');
 	let returnedText: string[][] = [];
 
-	console.log(projects)
-
-	console.log(projects);
 	returnedText = lines.map((line) =>
 		Array.from(line).map((letter) => `<span class="inline-block zoom-animation">${letter}</span>`)
 	);

@@ -24,7 +24,13 @@
 		href="/admin/categories"
 		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 	>
-		categories
+		Categories
+	</a>
+	<a
+		href="/admin/experiences"
+		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+	>
+		Experiences
 	</a>
 	<a
 		href="/admin/settings"
