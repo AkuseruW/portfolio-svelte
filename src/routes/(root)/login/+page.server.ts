@@ -1,5 +1,6 @@
 import { SERVEUR_URL } from '$env/static/private';
 import type { Actions } from './$types';
+import { redirect } from "@sveltejs/kit";
 
 
 export const actions: Actions = {
@@ -19,17 +20,19 @@ export const actions: Actions = {
             body: JSON.stringify(data),
         })
 
-        if ( res.ok ) {
-            
+        if (res.ok) {
             const json = await res.json();
-            console.log(json)
             cookies.set('access_token', json.access_token, {
                 path: '/',
                 httpOnly: true
             });
+
+            throw redirect(303, "/admin");
         }
-        
-        return { success: true };
+
+        return {
+            error: 'Invalid email or password'
+        }
     }
 
 }
